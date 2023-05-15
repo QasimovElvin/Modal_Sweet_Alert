@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+@model IEnumerable<Book>
+<div class="d-flex justify-content-end mr-2 mb-3">
+    <a class="btn btn-success" asp-action="Create">Create Book</a>
+</div>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Book table</h4>
+            <div class="table-responsive pt-3">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Photo
+                            </th>
+                            <th>
+                               BookName
+                            </th>
+                            <th>
+                               Author
+                            </th>
+                            <th>
+                               Genre
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                            <th>
+                                DisCount Price
+                            </th>
+                            <th>
+                                Rate
+                            </th>
+                            <th>
+                                Page Count
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @(count++)
+                                </td>
+                                <td>
+                                    <img src="~/assets/image/products/@(item.BookImages.FirstOrDefault(x=>x.IsMain==true)?.Image)" />
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                  <td>
+                                    @item.Author.FullName
+                                </td>
+                                   <td>
+                                    @item.Genre.Name
+                                </td>
+                                <td>
+                                    @item.Price
+                                </td>
+                                <td>
+                                    @item.DisCountPrice
+                                </td>
+                                 <td>
+                                    @item.Rate
+                                </td>
+                                <td>
+                                    @item.PageCount
+                                </td>
+                                <td>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">
+                                        <i class="mdi mdi-delete-sweep"></i>
+                                    </a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                                        <i class="mdi mdi-grease-pencil"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

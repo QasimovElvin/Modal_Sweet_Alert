@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@model Slider
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Slider Edit</h4>
+            <form class="forms-sample" asp-action="Edit" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="ImageFile">Image</label>
+                    <input asp-for="ImageFile" class="form-control" placeholder="Image" accept="image/*">
+                    <span asp-validation-for="Image"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title1">Title1</label>
+                    <input asp-for="Title1" class="form-control" placeholder="Title1">
+                    <span asp-validation-for="Title1"></span>
+
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title2">Title2</label>
+                    <input asp-for="Title2" class="form-control" placeholder="Title2">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Desc</label>
+                    <input asp-for="Description" class="form-control" placeholder="Description">
+                    <span asp-validation-for="Description"></span>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button class="btn btn-light">
+                    <a asp-action="Index">
+                        Cancel
+                    </a>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
